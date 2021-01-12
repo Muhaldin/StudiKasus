@@ -13,6 +13,7 @@ Dalam kasus yang diberikan saya menggunakan 4 buah model dan 3 buah controller y
 Dimulai dari Penawaran.xaml.cs yg bertujuan untuk menawarkan sebuah list makanan yang bisa menggunakan sebuah voucher untuk di tampilkan di listbox.
 
  private void generateContentPenawaran()
+ 
         {
             Item coffeLate = new Item("Coffe Late", 30000);
             Item blackTea = new Item("BlackTea", 20000);
@@ -22,9 +23,11 @@ Dimulai dari Penawaran.xaml.cs yg bertujuan untuk menawarkan sebuah list makanan
             Item pizza = new Item("Pizza", 75000);
             Item friedRice = new Item("Fried Rice Special", 45000);
         }
+        
 Kemudian dilanjutkan pada Voucher.xaml.cs, yang bertujuan untuk mengsingkronisasi voucher dan model penawaran, yang akan di tampilkan pada listbox juga.
 
   private void generateListVoucher()
+  
         {
             Model.Voucher awalTahun = new Model.Voucher(title: "Promo Awal Tahun Diskon 25%", discInPercent: 25);
             Model.Voucher tebusMurah = new Model.Voucher(title: "Promo Tebus Murah Diskon 30% atau max. 30.000", discInPercent: 30);
@@ -36,9 +39,11 @@ Kemudian dilanjutkan pada Voucher.xaml.cs, yang bertujuan untuk mengsingkronisas
 
             DaftarVoucher.Items.Refresh();
         }
+        
 Lalu pada MainWindow.xaml.cs kita menginisiasi object dari Penawaran.xaml.cs dan juga Voucher.xaml.cs, untuk di masukan dalam sebuah list KeranjangBelanja. Dan tampilan Total dari semua belanja akan di tampilkan pada ListBox.
 
         public MainWindow()
+        
         {
             InitializeComponent();
 
@@ -65,6 +70,7 @@ Lalu pada MainWindow.xaml.cs kita menginisiasi object dari Penawaran.xaml.cs dan
         }
 
         public void onPenawaranSelected(Item item)
+        
         {
             controller.addItem(item);
         }
@@ -77,6 +83,7 @@ Lalu pada MainWindow.xaml.cs kita menginisiasi object dari Penawaran.xaml.cs dan
         }
 
         private void listBoxPesanan_ItemClicked(object sender, MouseButtonEventArgs e)
+        
         {
             if (MessageBox.Show("Kamu ingin menghapus item ini?",
                     "Konfirmasi", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -85,4 +92,5 @@ Lalu pada MainWindow.xaml.cs kita menginisiasi object dari Penawaran.xaml.cs dan
                 Item item = listBox.SelectedItem as Item;
                 controller.deleteSelectedItem(item);
             }
+            
         }
